@@ -15,6 +15,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static final String AST = "ast";
     public static final String GLICEMIA = "glicemia";
     public static final String LDH = "ldh";
+    public static final String MORTALIDADE = "mortalidade";
 
     private static final int VERSION = 1;
 
@@ -31,7 +32,8 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 "leococitos real," +
                 "ast real," +
                 "ldh real," +
-                "glicemia real" +
+                "glicemia real," +
+                "mortalidade real" +
         ")";
 
         db.execSQL(sql);

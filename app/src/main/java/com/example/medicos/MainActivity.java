@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         DAL dal = new DAL(this);
         Cursor cursor = dal.loadAll();
 
-        String[] fields = new String[] {CreateDatabase.ID, CreateDatabase.NOME};
-        int[] ids = {R.id.tvId, R.id.tvTitle};
+        String[] fields = new String[] {CreateDatabase.ID, CreateDatabase.NOME,CreateDatabase.IDADE, CreateDatabase.MORTALIDADE};
+        int[] ids = {R.id.tvId, R.id.tvNome,R.id.tvIdade,R.id.tvMortalidade};
 
         //Log.d(TAG, "onCreate: id " + cursor.getInt(0) + " title " + cursor.getString(1));
         Log.d(TAG, "onCreate: " + cursor.getCount());
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
-                R.layout.paciente_layout, cursor, fields, ids, 0);
+                R.layout.lista_pacientes, cursor, fields, ids, 0);
 
         lvPacientes.setAdapter(adapter);
 

@@ -17,7 +17,7 @@ public class DAL {
         database = new CreateDatabase(context);
     }
 
-    public boolean insert(String nome, Double idade,Double leococitos,Double glicemia,Double ast,Double ldh) {
+    public boolean insert(String nome, Double idade,Double leococitos,Double glicemia,Double ast,Double ldh, Double mortalidade) {
         ContentValues values;
         long result;
         db = database.getWritableDatabase();
@@ -28,6 +28,7 @@ public class DAL {
         values.put(CreateDatabase.GLICEMIA, glicemia);
         values.put(CreateDatabase.AST, ast);
         values.put(CreateDatabase.LDH, ldh);
+        values.put(CreateDatabase.MORTALIDADE, mortalidade);
         result = db.insert(CreateDatabase.TABLE, null, values);
         db.close();
         if (result == -1) {
@@ -37,7 +38,7 @@ public class DAL {
         return true;
     }
 
-    public boolean update(int id, String nome, Double idade,Double leococitos,Double glicemia,Double ast,Double ldh) {
+    public boolean update(int id, String nome, Double idade,Double leococitos,Double glicemia,Double ast,Double ldh, Double mortalidade) {
         ContentValues values;
         long result;
         String where = "_id = ?";
@@ -50,6 +51,7 @@ public class DAL {
         values.put(CreateDatabase.GLICEMIA, glicemia);
         values.put(CreateDatabase.AST, ast);
         values.put(CreateDatabase.LDH, ldh);
+        values.put(CreateDatabase.MORTALIDADE, mortalidade);
         result = db.update(CreateDatabase.TABLE, values, where, args);
         db.close();
         if (result == -1) {
@@ -106,7 +108,7 @@ public class DAL {
 
     public Cursor loadAll() {
         Cursor cursor;
-        String[] fields = {CreateDatabase.ID, CreateDatabase.NOME};
+        String[] fields = {CreateDatabase.ID, CreateDatabase.NOME,CreateDatabase.IDADE, CreateDatabase.MORTALIDADE};
         db = database.getReadableDatabase();
         // SELECT _id, title FROM book
         // String sql = "SELECT _id, title FROM book";

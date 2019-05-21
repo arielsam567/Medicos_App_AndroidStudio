@@ -92,13 +92,7 @@ public class update_pacientr extends AppCompatActivity {
                 int qtd = 0;
                 int mor = 0;
 
-                if (dal.update(id,nome, idade, leococitos,glicemia, ast,ldh)) {
-                    Toast.makeText(update_pacientr.this,
-                            "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(update_pacientr.this,
-                            "Erro ao atualizar registro!", Toast.LENGTH_LONG).show();
-                }
+
 
 
                 if(litiaseBiliar.isChecked()){
@@ -151,6 +145,13 @@ public class update_pacientr extends AppCompatActivity {
 
                 pontuacao.setText("Pontuação:" + qtd);
                 mortalidade.setText("Mortalidade: " + mor+"%");
+                if (dal.update(id,nome, idade, leococitos,glicemia, ast,ldh, (double)mor)) {
+                    Toast.makeText(update_pacientr.this,
+                            "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(update_pacientr.this,
+                            "Erro ao atualizar registro!", Toast.LENGTH_LONG).show();
+                }
             }
 
         });

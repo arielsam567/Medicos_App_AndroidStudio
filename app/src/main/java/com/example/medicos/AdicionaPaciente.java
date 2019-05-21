@@ -72,13 +72,7 @@ public class AdicionaPaciente extends AppCompatActivity {
                 int qtd = 0;
                 int mor = 0;
 
-                if (dal.insert(nome, idade, leococitos,glicemia, ast,ldh)) {
-                    Toast.makeText(AdicionaPaciente.this,
-                            "Registro Inserido com sucesso!", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(AdicionaPaciente.this,
-                            "Erro ao inserir registro!", Toast.LENGTH_LONG).show();
-                }
+
 
 
                 if(litiaseBiliar.isChecked()){
@@ -128,6 +122,14 @@ public class AdicionaPaciente extends AppCompatActivity {
                 }else if(qtd==5){
                     mor = 40;
                 }
+                if (dal.insert(nome, idade, leococitos,glicemia, ast,ldh, (double) mor)) {
+                    Toast.makeText(AdicionaPaciente.this,
+                            "Registro Inserido com sucesso!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(AdicionaPaciente.this,
+                            "Erro ao inserir registro!", Toast.LENGTH_LONG).show();
+                }
+
 
                 pontuacao.setText("Pontuação:" + qtd);
                 mortalidade.setText("Mortalidade: " + mor+"%");
